@@ -13,14 +13,14 @@ import java.util.List;
 public interface PersonServiceClient {
 
     @GetMapping("/v1/people")
-    List<Object> getPeople();
+    List<Person> getPeople();
 
     @GetMapping("/v1/people/{id}")
-    Object getPerson(@PathVariable("id") Long id);
+    Person getPerson(@PathVariable("id") Long id);
 
-    @PostMapping
-    Object newPerson(Person person);
+    @PostMapping("/v1/people")
+    Person newPerson(Person person);
 
-    @PutMapping("{id}")
-    Object updatePerson(@PathVariable("id") Long id, Person person);
+    @PutMapping("/v1/people/{id}")
+    Person updatePerson(@PathVariable("id") Long id, Person person);
 }
