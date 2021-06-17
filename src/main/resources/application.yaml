@@ -1,0 +1,10 @@
+server:
+  port : 30000
+
+spring:
+  application:
+    name: "@project.name@"
+
+rest:
+  person-service:
+    url: localhost:40000
