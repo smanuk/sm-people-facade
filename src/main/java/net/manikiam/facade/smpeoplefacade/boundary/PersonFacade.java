@@ -17,25 +17,25 @@ public class PersonFacade {
     PersonServiceClient personServiceClient;
 
     @GetMapping
-    public List<Object> getPeople() {
+    public List<Person> getPeople() {
 
         return personServiceClient.getPeople();
     }
 
     @GetMapping("{id}")
-    public Object getPerson(@PathVariable("id") Long id) {
+    public Person getPerson(@PathVariable("id") Long id) {
 
         return personServiceClient.getPerson(id);
     }
 
     @PostMapping
-    public Object newPerson(@RequestBody @Valid Person person) {
+    public Person newPerson(@RequestBody @Valid Person person) {
 
         return personServiceClient.newPerson(person);
     }
 
     @PutMapping("{id}")
-    public Object updatePerson(@PathVariable("id")Long id, @RequestBody Person person) {
+    public Person updatePerson(@PathVariable("id")Long id, @RequestBody Person person) {
 
         return personServiceClient.updatePerson(id, person);
     }
