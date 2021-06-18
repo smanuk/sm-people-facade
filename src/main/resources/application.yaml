@@ -9,4 +9,4 @@ rest:
   person-service:
     url: localhost:40000
   rest-countries:
-    url: https://restcountries.eu/rest/v2
+    url: https://restcountries.eu/rest
