@@ -34,9 +34,9 @@ public class PersonFacade {
     }
 
     @PostMapping
-    public Person newPerson(@RequestBody @Valid Person person) {
+    public PersonDTO newPerson(@RequestBody @Valid Person person) {
 
-        return personServiceClient.newPerson(person);
+        return personService.newPerson(person);
     }
 
     @PutMapping("{id}")
