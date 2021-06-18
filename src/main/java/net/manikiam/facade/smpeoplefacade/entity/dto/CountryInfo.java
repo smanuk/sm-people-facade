@@ -7,6 +7,7 @@ public class CountryInfo {
 
     private String name;
     private String alpha2Code;
+    private String alpha3Code;
     private String capital;
     private String region;
 }
