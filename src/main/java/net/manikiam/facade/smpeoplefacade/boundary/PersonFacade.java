@@ -1,7 +1,9 @@
 package net.manikiam.facade.smpeoplefacade.boundary;
 
 import lombok.extern.slf4j.Slf4j;
+import net.manikiam.facade.smpeoplefacade.control.PersonService;
 import net.manikiam.facade.smpeoplefacade.entity.Person;
+import net.manikiam.facade.smpeoplefacade.entity.dto.PersonDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,29 +16,29 @@ import java.util.List;
 public class PersonFacade {
 
     @Autowired
-    PersonServiceClient personServiceClient;
+    PersonService personService;
 
     @GetMapping
-    public List<Person> getPeople() {
+    public List<PersonDTO> getPeople() {
 
-        return personServiceClient.getPeople();
+        return personService.getPeople();
     }
 
     @GetMapping("{id}")
-    public Person getPerson(@PathVariable("id") Long id) {
+    public PersonDTO getPerson(@PathVariable("id") Long id) {
 
-        return personServiceClient.getPerson(id);
+        return personService.getPerson(id);
     }
 
     @PostMapping
-    public Person newPerson(@RequestBody @Valid Person person) {
+    public PersonDTO newPerson(@RequestBody @Valid Person person) {
 
-        return personServiceClient.newPerson(person);
+        return personService.newPerson(person);
     }
 
     @PutMapping("{id}")
-    public Person updatePerson(@PathVariable("id")Long id, @RequestBody Person person) {
+    public PersonDTO updatePerson(@PathVariable("id")Long id, @RequestBody Person person) {
 
-        return personServiceClient.updatePerson(id, person);
+        return personService.updatePerson(id, person);
     }
 }

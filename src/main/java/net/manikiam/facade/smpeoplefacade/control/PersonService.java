@@ -1,0 +1,52 @@
+package net.manikiam.facade.smpeoplefacade.control;
+
+import lombok.extern.slf4j.Slf4j;
+import net.manikiam.facade.smpeoplefacade.boundary.PersonServiceClient;
+import net.manikiam.facade.smpeoplefacade.boundary.RestCountriesClient;
+import net.manikiam.facade.smpeoplefacade.entity.Person;
+import net.manikiam.facade.smpeoplefacade.entity.dto.CountryInfo;
+import net.manikiam.facade.smpeoplefacade.entity.dto.PersonDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Slf4j
+@Service
+public class PersonService {
+
+    @Autowired
+    private PersonServiceClient personServiceClient;
+
+    @Autowired
+    private RestCountriesClient restCountriesClient;
+
+    public List<PersonDTO> getPeople() {
+
+        return personServiceClient.getPeople().stream()
+                .map(person -> buildDTO(person))
+                .collect(Collectors.toList());
+    }
+
+    public PersonDTO getPerson(Long id) {
+        return buildDTO(personServiceClient.getPerson(id));
+    }
+
+    public PersonDTO newPerson(Person person) {
+
+        return buildDTO(personServiceClient.newPerson(person));
+    }
+
+    public PersonDTO updatePerson(Long id, Person person) {
+
+        return buildDTO(personServiceClient.updatePerson(id, person));
+    }
+
+
+    private PersonDTO buildDTO(Person person) {
+
+        CountryInfo countryInfo = restCountriesClient.getCountry(person.getCountryCode());
+        return new PersonDTO(person, countryInfo);
+    }
+}
