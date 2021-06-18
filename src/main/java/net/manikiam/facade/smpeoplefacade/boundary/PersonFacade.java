@@ -40,8 +40,8 @@ public class PersonFacade {
     }
 
     @PutMapping("{id}")
-    public Person updatePerson(@PathVariable("id")Long id, @RequestBody Person person) {
+    public PersonDTO updatePerson(@PathVariable("id")Long id, @RequestBody Person person) {
 
-        return personServiceClient.updatePerson(id, person);
+        return personService.updatePerson(id, person);
     }
 }
