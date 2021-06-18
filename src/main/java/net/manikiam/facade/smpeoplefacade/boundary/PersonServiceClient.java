@@ -13,7 +13,6 @@ import java.util.List;
 @FeignClient(name = "people", url = "${rest.person-service.url}")
 public interface PersonServiceClient {
 
-    @Cacheable("people")
     @GetMapping("/v1/people")
     List<Person> getPeople();
 
