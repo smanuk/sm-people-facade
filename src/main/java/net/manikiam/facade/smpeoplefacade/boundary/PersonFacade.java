@@ -22,9 +22,9 @@ public class PersonFacade {
     PersonService personService;
 
     @GetMapping
-    public List<Person> getPeople() {
+    public List<PersonDTO> getPeople() {
 
-        return personServiceClient.getPeople();
+        return personService.getPeople();
     }
 
     @GetMapping("{id}")

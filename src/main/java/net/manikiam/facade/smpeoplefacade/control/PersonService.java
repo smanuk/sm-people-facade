@@ -9,6 +9,9 @@ import net.manikiam.facade.smpeoplefacade.entity.dto.PersonDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Slf4j
 @Service
 public class PersonService {
@@ -18,6 +21,13 @@ public class PersonService {
 
     @Autowired
     private RestCountriesClient restCountriesClient;
+
+    public List<PersonDTO> getPeople() {
+
+        return personServiceClient.getPeople().stream()
+                .map(person -> buildDTO(person))
+                .collect(Collectors.toList());
+    }
 
     public PersonDTO getPerson(Long id) {
         return buildDTO(personServiceClient.getPerson(id));
