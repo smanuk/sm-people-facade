@@ -16,9 +16,6 @@ import java.util.List;
 public class PersonFacade {
 
     @Autowired
-    PersonServiceClient personServiceClient;
-
-    @Autowired
     PersonService personService;
 
     @GetMapping
