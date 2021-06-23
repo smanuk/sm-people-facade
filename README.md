@@ -13,3 +13,5 @@ Once the sm-people-service and associated docker container and this facade is ru
 
 `./loadUsers.sh random-users.json`
 This will load 500 fake users into your database.
+
+You will need to install `jq` to be able to use this script.  I used brew, but feel free to install it how you want `brew install jq`
